@@ -1,0 +1,15 @@
+{
+  "name": "mppc-interface",
+  "version": "1.0.0",
+  "description": "MPPC interface AVR slave board communication library.",
+  "main": "mppc-interface.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sawaiz",
+  "license": "ISC",
+  "dependencies": {
+    "raspi": "^3.0.5",
+    "raspi-i2c": "^5.0.3"
+  }
+}
