@@ -17,7 +17,7 @@ sudo node -e 'new (require("./mppc-interface"))(0x08).voltageDump();'
 ```
 
 ### Response
-There are a few functions but the voltage dump provides voltages, temps (not really wokring yet), and targets for all 8 channels. It prints out to the terminal in a markdown compatible table.
+There are a few functions but the voltage dump provides voltages, temps, and targets for all 8 channels. It prints out to the terminal in a markdown compatible table. The target voltage is compensated for 25 C.
 ```md
 |Board   0x08|  Channel 0 |  Channel 1 |  Channel 2 |  Channel 3 |  Channel 4 |  Channel 5 |  Channel 6 |  Channel 7 |
 |------------|------------|------------|------------|------------|------------|------------|------------|------------|
