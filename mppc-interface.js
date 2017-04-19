@@ -159,6 +159,22 @@ module.exports = class mppcInterface {
         return this._readLong(CHANNEL_ADDR) / 1000000;
     }
 
+    // Returns a object with all eight channels
+    // Command line single use example
+    // sudo node -e 'new (require("./mppcInterface"))(0x08).data();'  
+    data(){
+        var data = {};
+        data.boardADDR = this.SLAVE_ADDR;
+        data.channel = [];
+        for (var channelNo = 0; channelNo < 8; channelNo++) {
+            data.channel.push({});
+            data.channel[channelNo].target = this.readTarget(channelNo);
+            data.channel[channelNo].voltage = this.readVoltage(channelNo);
+            data.channel[channelNo].temp = this.readTemp(channelNo);
+        }
+        return data;
+    }
+
     // Dump all data for specific mppcInterface slave
     // Example single line command line call
     //
