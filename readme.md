@@ -1,4 +1,4 @@
-# MPPPC Interface
+# MPPC Interface
 Node.js library for the MPPC interface family of boards, this is the master code that communicates with a AVR slave that controls the high voltage supplies. 
 
 ### Use
