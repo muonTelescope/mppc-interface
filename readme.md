@@ -1,19 +1,24 @@
 # MPPPC Interface
-Node.js library for the MPPC interface family of boards, this is the master code that communicates with a AVR slave that acutally controls the high voltage supplies. 
+Node.js library for the MPPC interface family of boards, this is the master code that communicates with a AVR slave that controls the high voltage supplies. 
 
 ### Use
-
-For example to use it on your project instatiate the libray, and call the data function. As it acsesses hardware features, you need sudo in order to run it. The constructior requres the I2C adress of the slave.
-```js
-var MPPC_INTERFACE = require("./mppc-interface.js");
+For example, to use it on your project instantiate the library, and call the data function. As it accesses hardware features, you need sudo to run it. The constructor requires the I2C address of the slave. Include it in your `package.json` dependency tree with
+```javascript
+"dependencies": {
+  "mppc-interface": "muonTelescope/mppc-interface"
+}
+```
+After `npm install` 
+```javascript
+var MPPC_INTERFACE = require("mppc-interface");
 var mppcInterface = new MPPC_INTERFACE(0x08);
 mppcInterface.voltageDump();
 ```
 
-You can can also call it directly from the command line 
+You can also call it directly from the command line 
 
 ```bash
-sudo node -e 'new (require("./mppc-interface"))(0x08).voltageDump();'
+sudo node -e 'new (require("mppc-interface"))(0x08).voltageDump();'
 ```
 
 ### Response
@@ -25,3 +30,16 @@ There are a few functions but the voltage dump provides voltages, temps, and tar
 |Voltage  (V)|  54.981052 |   4.478388 |   4.515167 |   4.510402 |   0.000000 |   0.000000 |   0.000000 |   0.000000 |
 |Temp     (C)| 191.728096 |  89.277376 |  89.540376 |  89.507904 |   0.000000 |   0.000000 |   0.000000 |   0.000000 |
 ```
+
+### Functions
+A table of all public functions. SLAVE_ADDR is the only public variable that gets set during construction.
+
+| Function                      | Action                                               | Return |
+|-------------------------------|------------------------------------------------------|--------|
+| setTarget(channel, voltage)   | Sets the voltage for the channel                     | void   |
+| readVoltage(channel)          | Reads voltage from channel                           | Number |
+| readTarget(channel)           | Reads target voltage at 25C                          | Number |
+| readTemp(channel)             | Read temperature in C                                 | Number |
+| data()                        | Object containing voltage, target, and temp          | Object |
+| voltageDump()                 | Print to console MD formatted voltage target temp    | void   |
+
